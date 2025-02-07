@@ -13,6 +13,8 @@ assert torch.cuda.is_available()
 torch_device = "cuda"
 
 model_name = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+model_name = "models/TinyLlama-1.1B-Chat-v1.0"
+model_name = "models/vicuna-7b-v1.3"
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
