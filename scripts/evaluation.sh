@@ -12,6 +12,11 @@
 
 mkdir ./experiments/$SLURM_JOB_ID
 
+python applications/eval_mtbench.py \
+    --model-path models/vicuna-7b-v1.3 \
+    --model-id baseline-vicuna-7b-v1.3 \
+    --level $LEVEL --window $WIN --guess $GUESS --use-flash $FLASH --use-pp $PP
+
 export CUDA=0
 export LADE=1
 export LEVEL=5

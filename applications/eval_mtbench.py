@@ -387,11 +387,11 @@ def get_model_answers(
         #    break
 
     if lade.get_device() == 0 and ds_local_rank == 0:
-        torch.save(stats[question_idx], answer_file + ".pt")
-        print("LOG SAVE TO ", answer_file + ".pt")
+        #torch.save(stats[question_idx], answer_file + ".pt")
+        #print("LOG SAVE TO ", answer_file + ".pt")
         print(f"AVERAGE THROUGHPUT1 {overall_tp / count_gen} AVERAGE THROUGHPUT2 {overall_gen / overall_time} STAT {[overall_tp, count_gen, overall_gen, overall_time]}")
         lade.log_history()
-        lade.save_log(answer_file + "-lade-log.pt")
+        #lade.save_log(answer_file + "-lade-log.pt")
 
 
 def reorg_answer_file(answer_file):

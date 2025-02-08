@@ -19,3 +19,9 @@ CUDA_VISIBLE_DEVICES=$CUDA USE_LADE=$LADE python eval_mtbench.py \
     --model-path models/vicuna-7b-v1.3 --model-id \
     vicuna-7b-v1.3-level-$LEVEL-win-$WIN-guess-$GUESS-f$FLASH-pp$CUDA \
     --level $LEVEL --window $WIN --guess $GUESS --use-flash $FLASH --use-pp $PP
+
+# eval baseline
+python applications/eval_mtbench.py \
+    --model-path models/vicuna-7b-v1.3 \
+    --model-id baseline-vicuna-7b-v1.3 \
+    --level $LEVEL --window $WIN --guess $GUESS --use-flash $FLASH --use-pp $PP
