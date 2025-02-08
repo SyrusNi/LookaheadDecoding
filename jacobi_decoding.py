@@ -75,7 +75,7 @@ def timer(wall_times, key):
 def main():
     wall_times = {'draft model': [], 'target model': [], 'jacobi decoding': []}
 
-    draft_model_path = 'models/llama-68m'
+    draft_model_path = 'models/TinyLlama-1.1B-Chat-v1.0'
     target_model_path = 'models/vicuna-7b-v1.3'
 
     tokenizer = AutoTokenizer.from_pretrained(draft_model_path, padding_side = 'left')

@@ -285,6 +285,9 @@ def get_model_answers(
             conv = get_conversation_template(model_id)
             turns = []
             prompts = []
+            wall_time = []
+            new_tokens = []
+            idxs = []
 
             for j in range(len(question["turns"])):
                 qs = question["turns"][j]
@@ -302,6 +305,7 @@ def get_model_answers(
                 
                 # some models may error out when generating long outputs
                 if True:
+                    torch.cuda.synchronize()
                     start_time = time.time()
                     output_ids = model.generate(
                         torch.as_tensor(input_ids).cuda(),
@@ -310,11 +314,14 @@ def get_model_answers(
                         max_new_tokens=max_new_token,
                         top_k=0.0, top_p=1.0,
                     )
+                    torch.cuda.synchronize()
                     end_time = time.time()
-                    gap_time = end_time - start_time 
+                    gap_time = end_time - start_time
+                    wall_time.append(gap_time)
                     tokens = output_ids.numel() - len(input_ids[0])
                     overall_time += gap_time
                     overall_gen += tokens
+                    new_tokens.append(tokens)
                     overall_tp += tokens / gap_time
                     count_gen += 1
 
@@ -361,7 +368,8 @@ def get_model_answers(
                 turns.append(output)
                 conv.messages[-1][-1] = output
 
-            choices.append({"index": i, "turns": turns, "prompts" : prompts})
+            idxs = lade.log_idx()
+            choices.append({"index": i, "turns": turns, "idxs": idxs, "prompts" : prompts, "new_tokens": new_tokens, "wall_time": wall_time})
 
         if lade.get_device() == 0 and ds_local_rank == 0:
             # Dump answers

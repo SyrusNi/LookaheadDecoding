@@ -71,6 +71,13 @@ def augment_all():
     augment_llama()
     augment_generate()
 
+def log_idx():
+    idxs = []
+    if "log" in CONFIG_MAP:
+        idxs.append(CONFIG_MAP["log"][-2][1])
+        idxs.append(CONFIG_MAP["log"][-1][1])
+    return idxs
+
 def log_history(clear=False):
     gen = 0
     step = 0    
