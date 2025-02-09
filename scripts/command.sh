@@ -4,6 +4,10 @@ python minimal.py #no Lookahead decoding
 USE_LADE=1 LOAD_LADE=1 python minimal.py #use Lookahead decoding, 1.6x speedup
 USE_LADE=1 LOAD_LADE=1 python -m ipdb minimal.py
 
+python draft.py
+USE_LADE=1 LOAD_LADE=1 python draft.py
+USE_LADE=1 LOAD_LADE=1 python -m ipdb draft.py
+
 #download data 
 wget https://raw.githubusercontent.com/lm-sys/FastChat/v0.2.31/fastchat/llm_judge/data/mt_bench/question.jsonl -O mtbench.jsonl 
 
