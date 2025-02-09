@@ -6,6 +6,7 @@ USE_LADE=1 LOAD_LADE=1 python -m ipdb minimal.py
 
 python draft.py
 USE_LADE=1 LOAD_LADE=1 python draft.py
+USE_LADE=1 LOAD_LADE=1 USE_DRAFT=1 python draft.py
 USE_LADE=1 LOAD_LADE=1 python -m ipdb draft.py
 
 #download data 

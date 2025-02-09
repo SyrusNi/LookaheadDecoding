@@ -22,10 +22,13 @@ def greedy_search_proxy(self, *args, **kwargs):
         return greedy_search_chat(self, chat=True, *args, **kwargs)
     
     if USE_LADE and USE_DRAFT:
+        print('use jacobi_greedy_search_multilevel_draft')
         return jacobi_greedy_search_multilevel_draft(self, chat=False, *args, **kwargs)
-    if USE_LADE:
+    elif USE_LADE:
+        print('use jacobi_greedy_search_multilevel')
         return jacobi_greedy_search_multilevel(self, chat=False, *args, **kwargs)
     else:
+        print('use origin function')
         return FUNC_MAP["greedy_search"](self, *args, **kwargs)
 
 def sample_proxy(self, *args, **kwargs):

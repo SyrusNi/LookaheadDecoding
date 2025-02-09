@@ -50,7 +50,7 @@ t1g = time.time()
 
 print("Output:\n" + 100 * '-')
 print("Greedy output: ", tokenizer.decode(greedy_output[0], skip_special_tokens=False))
-
+print(t1g-t0g)
 print("Greedy Generated Tokens:", (greedy_output.numel() - init_len) ,"Generation Speed: ", (greedy_output.numel() - init_len) / (t1g - t0g), " tokens/s")
 #python minimal.py #44 tokens/s
 #LOAD_LADE=1 USE_LADE=1 python minimal.py #74 tokens/s, 1.6x throughput without changing output distribution!
